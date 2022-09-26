@@ -13,10 +13,11 @@ public class EventManager : MonoBehaviour
 
     void Start()
     {
-        userInput = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
+        userInput = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>(); // InputField 컴포넌트에 접근 
         myTickets = PlayerPrefs.GetInt("tickets");
         textDisplay.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("display", "result");
         userInput.text = myTickets.ToString();
+        Test();
     }
     public void StoreTicket()
     {
@@ -42,9 +43,32 @@ public class EventManager : MonoBehaviour
     }
     public void Save()
     {
-        PlayerPrefs.SetInt("tickets", myTickets);
-        PlayerPrefs.SetString("display", "result");
-        PlayerPrefs.Save();     // 수정된 모든 preferences를 파일에 저장한다.
+        PlayerPrefs.SetInt("tickets", myTickets);   // 메모리에 정수값 저장
+        PlayerPrefs.SetString("display", "result");    // 메모리에 문자열 저장
+        PlayerPrefs.Save();     // 수정된 모든 preferences를 파일(드라이브)에 저장한다.
+    }
+
+    public void Test()  // 명시적 형변환 테스트
+    {
+        int num = 50000;
+        short smallNum = (short)num;
+        char stringNum = (char)num;
+        Debug.Log(smallNum);
+        Debug.Log(stringNum);
+    }
+
+    public void AllDelete()    // 저장되어 있는 모든 데이터 삭제하기   PlayerPrefs 초기화 
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void TicketsDelete()     // tickets 키를 가진 데이터 삭제
+    {
+        PlayerPrefs.DeleteKey("tickets");
+    }
+    public void DisplayDelete()      // display 키를 가진 데이터 삭제
+    {
+        PlayerPrefs.DeleteKey("display");
     }
 }
 
