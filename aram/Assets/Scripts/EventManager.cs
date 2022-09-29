@@ -26,7 +26,8 @@ public class EventManager : MonoBehaviour
     {
         //myTickets = (int.TryParse(_inputField.GetComponent<TextMeshPro>().text, out myTickets)) ? myTickets : -1; //정수 입력받기
         myTickets = int.Parse(userInput.text);
-        float meal_per_day = myTickets / ((remainDays * 3 + 1) / 3.0f); // 계산식
+        int aramWork = remainDays * 3 + 1;  // TimeCalculator에서 1씩 값 변경을 위해 새로운 변수 선언 및 초기화
+        float meal_per_day = myTickets / ((aramWork) / 3.0f); // 계산식
         string result = string.Format("하루에 {0:0.##}끼 씩 먹으면 다 먹을 수 있습니다.", meal_per_day);    // 소수점 두 번째 자리에서 반올림
         Save(result);
         textDisplay.GetComponent<TextMeshProUGUI>().text = result;  // 계산 결과를 화면에 나타내기 
