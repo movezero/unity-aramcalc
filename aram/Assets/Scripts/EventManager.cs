@@ -10,7 +10,7 @@ public class EventManager : MonoBehaviour
     public GameObject textDisplay;
     public int myTickets = 159;  //  나의 남은 식수, int
     static int remainDays = 79;    //  시간에 따라 자동으로 변경 필요
-    int aramWork = remainDays * 3 + 1;  // TimeCalculator에서 1씩 값 변경을 위해 새로운 변수 선언 및 초기화
+    public static int aramWork = remainDays * 3 + 1;  // TimeCalculator에서 1씩 값 변경을 위해 새로운 변수 선언 및 초기화
 
     void Start()
     {

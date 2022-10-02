@@ -5,27 +5,38 @@ using System;
 
 public class TimeCalculator : MonoBehaviour
 {
-    // public GameObject dateText;
-    // public GameObject timeText;
     public DateTime now;
-    public DateTime later;
+    public DateTime standard;
+    TimeSpan timeDiff;  // 앱을 하루에 여러 번 실행했을 때 중복해서 값을 감산하지 않도록 조치가 필요함.
 
     void Start()
     {
         now = DateTime.Now;
-        later = new DateTime(2022, 09, 30, 0, 0, 0);
-        TimeSpan ts;
-        ts = now - later;
-        string nowTime = now.ToString();
-        Debug.Log(nowTime);
-        Debug.Log(later);
-        Debug.Log(ts);
+        standard = new DateTime(2022, 10, 1, 0, 0, 0);
+        timeDiff = now - standard;
+        // string nowTime = now.ToString();
+
+        if (timeDiff.Days > 0)
+        {
+            EventManager.aramWork -= 3 * timeDiff.Days;
+        }
+        else
+        {
+
+        }
+        Debug.Log(now);
+        Debug.Log(standard);
+        Debug.Log(timeDiff.TotalMinutes);
+        Debug.Log(timeDiff.Minutes);
     }
 
     // Update is called once per frame
-    void Update()
+    void MinutesCalc()
     {
+        if (timeDiff.Minutes > 0)
+        {
 
+        }
     }
 
     //     00:00 기준 시작 (분 단위로 작성)
